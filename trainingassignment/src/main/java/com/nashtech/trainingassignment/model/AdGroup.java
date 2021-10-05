@@ -1,7 +1,14 @@
 package com.nashtech.trainingassignment.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AdGroup {
 	private String campaign_id;
 	private String advertiser_id;
@@ -124,6 +131,12 @@ public class AdGroup {
 	public void setSchedule_start_time(LocalDateTime schedule_start_time) {
 		this.schedule_start_time = schedule_start_time;
 	}
+	
+	public void setSchedule_start_time(String schedule_start_time) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
+		LocalDateTime dateTime = LocalDateTime.parse(schedule_start_time, formatter);
+		this.schedule_start_time = dateTime;
+	}
 
 	public LocalDateTime getSchedule_end_time() {
 		return schedule_end_time;
@@ -132,6 +145,12 @@ public class AdGroup {
 	public void setSchedule_end_time(LocalDateTime schedule_end_time) {
 		this.schedule_end_time = schedule_end_time;
 	}
+	
+	public void setSchedule_end_time(String schedule_end_time) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"); 
+		LocalDateTime dateTime = LocalDateTime.parse(schedule_end_time, formatter);
+		this.schedule_end_time = dateTime;
+	}
 
 	public String getAge() {
 		return age;
@@ -139,6 +158,13 @@ public class AdGroup {
 
 	public void setAge(String age) {
 		this.age = age;
+	}
+	
+	@JsonProperty("age")
+	public void setAge(String[] age) {
+//		this.age = Stream.of(age).collect(Collectors.joining(","));
+		if (age != null)
+		this.age = String.join(",", age);
 	}
 
 	public String getGender() {
@@ -156,6 +182,12 @@ public class AdGroup {
 	public void setLanguages(String languages) {
 		this.languages = languages;
 	}
+	
+	@JsonProperty("languages")
+	public void setLanguages(String[] languages) {
+		if (languages != null)
+		this.languages = String.join(",", languages);
+	}
 
 	public String getLocation() {
 		return location;
@@ -164,7 +196,12 @@ public class AdGroup {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
+	
+	@JsonProperty("location")
+	public void setLocation(String[] location) {
+		if (location != null)
+		this.location = String.join(",", location);
+	}
 	@Override
 	public String toString() {
 		return "AdGroup [campaign_id=" + campaign_id + ", advertiser_id=" + advertiser_id + ", campaign_name="

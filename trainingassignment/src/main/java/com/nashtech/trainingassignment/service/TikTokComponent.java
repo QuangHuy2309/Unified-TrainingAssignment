@@ -12,13 +12,10 @@ public abstract  class TikTokComponent {
 		this.token = token;
 	}
 	
-    protected String buildUrl(String path) throws URISyntaxException {
-        URI uri = new URI("https", "business-api.tiktok.com", path, "", "");
-        return uri.toString();
-    }
+    
 
-	abstract String getData();
-//	
-//	
-//	abstract void saveData();
+//	abstract String getData();	
+	
+	abstract String saveData();
+	
 }

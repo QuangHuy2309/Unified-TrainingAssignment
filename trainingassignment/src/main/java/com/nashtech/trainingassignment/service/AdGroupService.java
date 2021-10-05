@@ -16,8 +16,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nashtech.trainingassignment.DAO.CampaignDAO;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.nashtech.trainingassignment.DAO.AdGroupDAO;
 import com.nashtech.trainingassignment.DAO.DatabaseConnector;
+import com.nashtech.trainingassignment.model.AdGroup;
 import com.nashtech.trainingassignment.model.Campaigns;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
@@ -31,39 +33,41 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 
-public class CampaignService extends TikTokComponent {
-	private CampaignDAO camDAO;
-	private final String PATH = "/open_api/v1.2/campaign/get";
+public class AdGroupService extends TikTokComponent {
+	private AdGroupDAO adGroupDAO;
+	private final String PATH = "/open_api/v1.2/adgroup/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
+	
 
-	public CampaignService(String advertiser_id, String token) {
+	public AdGroupService(String advertiser_id, String token) {
 		super(advertiser_id, token);
-		this.camDAO = CampaignDAO.getInstance();
+		this.adGroupDAO = AdGroupDAO.getInstance();
 	}
 
-	public ArrayList<Campaigns> dataMapping(String response) {
+	public ArrayList<AdGroup> dataMapping(String response) {
 		JSONObject Jobject = new JSONObject(response);
 		JSONObject Jdata = Jobject.getJSONObject("data");
 		JSONArray Jarray = Jdata.getJSONArray("list");
-		ArrayList<Campaigns> listCampaign = new ArrayList<Campaigns>();
+		ArrayList<AdGroup> listAdGroup = new ArrayList<AdGroup>();
+		objMapper.findAndRegisterModules();
+		objMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 		for (int i = 0; i < Jarray.length(); i++) {
 			JSONObject jObj = Jarray.getJSONObject(i);
 			try {
-				Campaigns campaign = objMapper.readValue(jObj.toString(), Campaigns.class);
-				listCampaign.add(campaign);
+				AdGroup adGroup = objMapper.readValue(jObj.toString(), AdGroup.class);
+				listAdGroup.add(adGroup);
 			} catch (JsonMappingException e) {
 				e.printStackTrace();
 			} catch (JsonProcessingException e) {
 				e.printStackTrace();
 			}
 		}
-		return listCampaign;
+		return listAdGroup;
+
 	}
-	
-	
-	public ArrayList<Campaigns> getData() {
+	public ArrayList<AdGroup> getData() {
 		String response = HttpRequest.getApi(advertiser_id, token, PATH, "1");
-		ArrayList<Campaigns> listCampaign = dataMapping(response);
+		ArrayList<AdGroup> listCampaign = dataMapping(response);
 		int totalPage = PageAction.getTotalPage(response);
 		if (totalPage > 1) {
 			for(int i=2; i<= totalPage; i++) {
@@ -73,9 +77,9 @@ public class CampaignService extends TikTokComponent {
 		}
 		return listCampaign;
 	}
-
+	
 	public String saveData() {
-		return camDAO.saveData(getData());
+		return adGroupDAO.saveData(getData());
 	}
 
 }

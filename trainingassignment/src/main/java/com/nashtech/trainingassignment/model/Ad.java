@@ -2,6 +2,9 @@ package com.nashtech.trainingassignment.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Ad {
 	private String campaign_id;
 	private String advertiser_id;
