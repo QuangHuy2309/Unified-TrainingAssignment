@@ -7,20 +7,20 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.nashtech.trainingassignment.model.Campaigns;
-import com.nashtech.trainingassignment.service.CampaignService;
 
 public class CampaignDAO {
-	
-	private CampaignDAO() {}
-	
+
+	private CampaignDAO() {
+	}
+
 	public static CampaignDAO getInstance() {
-        return SingletonCampaignDAO.INSTANCE;
-    }
-	
+		return SingletonCampaignDAO.INSTANCE;
+	}
+
 	private static class SingletonCampaignDAO {
-        private static final CampaignDAO INSTANCE = new CampaignDAO();
-    }
-	
+		private static final CampaignDAO INSTANCE = new CampaignDAO();
+	}
+
 	public String saveData(ArrayList<Campaigns> listCampaign) {
 		Connection connect = DatabaseConnector.getConnection();
 		String sql = "insert into tk_campaign(campaign_id, advertiser_id, campaign_name, budget, budget_mode, status, "

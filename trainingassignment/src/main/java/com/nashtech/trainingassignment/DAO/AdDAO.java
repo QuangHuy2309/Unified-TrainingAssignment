@@ -27,8 +27,8 @@ public class AdDAO {
 	public String saveData(ArrayList<Ad> listAd) {
 		Connection connect = DatabaseConnector.getConnection();
 		String sql = "insert into tk_ad(ad_id, ad_name, ad_text, ad_format, campaign_id, advertiser_id, campaign_name, "
-				+ "adgroup_id, adgroup_name, status, opt_status, app_name) "
-				+ "VALUES (?,?,?,?,?,?,?,?,?,?,?,?) " + "ON CONFLICT(ad_id) DO UPDATE SET "
+				+ "adgroup_id, adgroup_name, status, opt_status, app_name) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?) "
+				+ "ON CONFLICT(ad_id) DO UPDATE SET "
 				+ "ad_name=?, ad_text=?, ad_format=?, campaign_id=?, advertiser_id=?, campaign_name=?, adgroup_id=?, "
 				+ "adgroup_name=?, status=?, opt_status=?, app_name=?";
 		AtomicBoolean checkSaveCamp = new AtomicBoolean(true);

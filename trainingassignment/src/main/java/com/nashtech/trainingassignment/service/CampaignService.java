@@ -33,7 +33,7 @@ import org.modelmapper.ModelMapper;
 
 public class CampaignService extends TikTokComponent {
 	private CampaignDAO camDAO;
-	private final String PATH = "/open_api/v1.2/campaign/get";
+	private final String PATH = "/open_api/v1.2/campaign/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
 
 	public CampaignService(String advertiser_id, String token) {
@@ -59,14 +59,13 @@ public class CampaignService extends TikTokComponent {
 		}
 		return listCampaign;
 	}
-	
-	
+
 	public ArrayList<Campaigns> getData() {
 		String response = HttpRequest.getApi(advertiser_id, token, PATH, "1");
 		ArrayList<Campaigns> listCampaign = dataMapping(response);
 		int totalPage = PageAction.getTotalPage(response);
 		if (totalPage > 1) {
-			for(int i=2; i<= totalPage; i++) {
+			for (int i = 2; i <= totalPage; i++) {
 				String nextResponse = HttpRequest.getApi(advertiser_id, token, PATH, String.valueOf(i));
 				listCampaign.addAll(dataMapping(nextResponse));
 			}

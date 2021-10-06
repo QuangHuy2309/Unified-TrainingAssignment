@@ -11,7 +11,6 @@ public class DatabaseConnector {
 			String url = "jdbc:postgresql://localhost:5432/nashtech_training?user=postgres&password=123456";
 			conn = DriverManager.getConnection(url);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return conn;
