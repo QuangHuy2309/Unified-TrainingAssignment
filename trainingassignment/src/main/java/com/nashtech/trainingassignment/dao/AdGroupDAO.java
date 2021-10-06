@@ -6,12 +6,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.apache.log4j.Logger;
+
 import com.nashtech.trainingassignment.model.AdGroup;
 import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.service.CampaignService;
 
 public class AdGroupDAO {
-
+	private static final Logger logger = Logger.getLogger(AdGroupDAO.class);
 	private AdGroupDAO() {
 	}
 
@@ -23,7 +25,7 @@ public class AdGroupDAO {
 		private static final AdGroupDAO INSTANCE = new AdGroupDAO();
 	}
 
-	public String saveData(ArrayList<AdGroup> listAdGroup) {
+	public boolean saveData(ArrayList<AdGroup> listAdGroup) {
 		Connection connect = DatabaseConnector.getConnection();
 		String sql = "insert into tk_adgroup(adgroup_id, adgroup_name, campaign_id, advertiser_id, campaign_name, status, "
 				+ "opt_status, create_time, modify_time, schedule_start_time, schedule_end_time, age, gender, languages, location)"
@@ -76,6 +78,10 @@ public class AdGroupDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return (checkSaveAdGroup.get()) ? "Save AdGroup data success" : "Save AdGroup data failed";
+		if (checkSaveAdGroup.get())
+			logger.info("Save AdGroup data success");
+		else
+			logger.info("Save AdGroup data failed");
+		return checkSaveAdGroup.get();
 	}
 }

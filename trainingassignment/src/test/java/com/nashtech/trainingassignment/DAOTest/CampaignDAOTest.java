@@ -1,6 +1,8 @@
 package com.nashtech.trainingassignment.DAOTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -28,9 +30,8 @@ public class CampaignDAOTest {
 		listCamp.add(camp1);
 		listCamp.add(camp2);
 		listCamp.add(camp3);
-		when(campDAO.saveData(listCamp)).thenReturn("Save Campaign data success");
-		String result = campDAO.saveData(listCamp);
-		assertEquals(result,"Save Campaign data success");
+		when(campDAO.saveData(listCamp)).thenReturn(true);
+		assertTrue(campDAO.saveData(listCamp));
 	}
 	
 	@Test
@@ -43,8 +44,7 @@ public class CampaignDAOTest {
 		listCamp.add(camp1);
 		listCamp.add(camp2);
 		listCamp.add(camp3);
-		when(campDAO.saveData(listCamp)).thenReturn("Save Campaign data failed");
-		String result = campDAO.saveData(listCamp);
-		assertEquals(result,"Save Campaign data failed");
+		when(campDAO.saveData(listCamp)).thenReturn(false);
+		assertFalse(campDAO.saveData(listCamp));
 	}
 }

@@ -82,7 +82,7 @@ public class AdGroupService extends TikTokComponent {
 	}
 
 	public String saveData() {
-		return adGroupDAO.saveData(getData());
+		return adGroupDAO.saveData(getData()) ? "Save AdGroup data success" : "Save AdGroup data failed";
 	}
 
 }

@@ -19,17 +19,20 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nashtech.trainingassignment.dao.DatabaseConnector;
 import com.nashtech.trainingassignment.model.Campaign;
+import com.nashtech.trainingassignment.service.AdService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 
 public class HttpRequest {
+	private static final Logger logger = Logger.getLogger(HttpRequest.class);
 
 	private static String buildUrl(String path) throws URISyntaxException {
 		URI uri = new URI("https", "business-api.tiktok.com", path, "", "");
@@ -55,9 +58,11 @@ public class HttpRequest {
 		Response response;
 		try {
 			response = client.newCall(request).execute();
+			logger.info("Get data from "+url+" success");
 			return response.body().string();
 		} catch (IOException e) {
 			e.printStackTrace();
+			logger.error("Get data from "+url+" failed");
 			return null;
 		}
 	}

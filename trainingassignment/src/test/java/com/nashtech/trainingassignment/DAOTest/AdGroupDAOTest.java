@@ -10,7 +10,7 @@ import org.mockito.Mockito;
 
 import com.nashtech.trainingassignment.dao.AdGroupDAO;
 import com.nashtech.trainingassignment.model.AdGroup;
-
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AdGroupDAOTest {
 	@Test
@@ -32,8 +32,7 @@ public class AdGroupDAOTest {
 		listAdGrp.add(adgrp1);
 		listAdGrp.add(adgrp2);
 		listAdGrp.add(adgrp3);
-		when(adGrpDAO.saveData(listAdGrp)).thenReturn("Save AdGroup data success");
-		String result = adGrpDAO.saveData(listAdGrp);
-		assertEquals(result,"Save AdGroup data success");
+		when(adGrpDAO.saveData(listAdGrp)).thenReturn(true);
+		assertTrue(adGrpDAO.saveData(listAdGrp));
 	}
 }

@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
 
 import com.nashtech.trainingassignment.dao.AdDAO;
@@ -49,9 +50,9 @@ public class AdDAOTest {
 		listAd.add(ad1);
 		listAd.add(ad2);
 		listAd.add(ad3);
-		when(adDAO.saveData(listAd)).thenReturn("Save Ad data success");
-		String result = adDAO.saveData(listAd);
-		assertEquals(result,"Save Ad data success");
+		when(adDAO.saveData(listAd)).thenReturn(true);
+//		String result = adDAO.saveData(listAd) ;
+		assertTrue(adDAO.saveData(listAd));
 	}
 
 }

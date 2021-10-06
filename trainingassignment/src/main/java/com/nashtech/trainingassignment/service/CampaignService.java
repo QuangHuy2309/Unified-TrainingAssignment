@@ -78,7 +78,7 @@ public class CampaignService extends TikTokComponent {
 	}
 
 	public String saveData() {
-		return camDAO.saveData(getData());
+		return camDAO.saveData(getData())  ? "Save Campaign data success" : "Save Campaign data failed";
 	}
 
 }

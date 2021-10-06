@@ -6,12 +6,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import org.apache.log4j.Logger;
+
 import com.nashtech.trainingassignment.model.Ad;
 import com.nashtech.trainingassignment.model.AdGroup;
 import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.service.CampaignService;
+import com.nashtech.trainingassignment.utils.HttpRequest;
 
 public class AdDAO {
+	private static final Logger logger = Logger.getLogger(AdDAO.class);
 
 	private AdDAO() {
 	}
@@ -24,14 +28,14 @@ public class AdDAO {
 		private static final AdDAO INSTANCE = new AdDAO();
 	}
 
-	public String saveData(ArrayList<Ad> listAd) {
+	public boolean saveData(ArrayList<Ad> listAd) {
 		Connection connect = DatabaseConnector.getConnection();
 		String sql = "insert into tk_ad(ad_id, ad_name, ad_text, ad_format, campaign_id, advertiser_id, campaign_name, "
 				+ "adgroup_id, adgroup_name, status, opt_status, app_name) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?) "
 				+ "ON CONFLICT(ad_id) DO UPDATE SET "
 				+ "ad_name=?, ad_text=?, ad_format=?, campaign_id=?, advertiser_id=?, campaign_name=?, adgroup_id=?, "
 				+ "adgroup_name=?, status=?, opt_status=?, app_name=?";
-		AtomicBoolean checkSaveCamp = new AtomicBoolean(true);
+		AtomicBoolean checkSaveAd = new AtomicBoolean(true);
 		listAd.stream().forEach((ad) -> {
 			try {
 				PreparedStatement ps = connect.prepareStatement(sql);
@@ -63,7 +67,8 @@ public class AdDAO {
 
 			} catch (SQLException e) {
 				e.printStackTrace();
-				checkSaveCamp.set(false);
+				checkSaveAd.set(false);
+
 			}
 		});
 		try {
@@ -71,6 +76,10 @@ public class AdDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return (checkSaveCamp.get()) ? "Save Ad data success" : "Save Ad data failed";
+		if (checkSaveAd.get())
+			logger.info("Save Ad data success");
+		else
+			logger.info("Save Ad data failed");
+		return checkSaveAd.get();
 	}
 }

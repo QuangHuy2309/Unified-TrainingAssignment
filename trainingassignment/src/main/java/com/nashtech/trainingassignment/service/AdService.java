@@ -29,6 +29,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 import org.apache.http.client.utils.URIBuilder;
+import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
@@ -37,6 +38,7 @@ public class AdService extends TikTokComponent {
 	private AdDAO adDAO;
 	private final String PATH = "/open_api/v1.2/ad/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
+	private static final Logger logger = Logger.getLogger(AdService.class);
 	
 	public AdService() {}
 	
@@ -78,7 +80,7 @@ public class AdService extends TikTokComponent {
 	}
 
 	public String saveData() {
-		return adDAO.saveData(getData());
+		return adDAO.saveData(getData()) ? "Save Ad data success" : "Save Ad data failed";
 	}
 
 }

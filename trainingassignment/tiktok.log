@@ -1,0 +1,18 @@
+2021-10-06 14:59:11 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/campaign/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-06 14:59:11 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/campaign/get/?advertiser_id=6791983391823626245&page=2# success
+2021-10-06 14:59:12 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/campaign/get/?advertiser_id=6791983391823626245&page=3# success
+2021-10-06 14:59:12 INFO  DatabaseConnector:18 - Connect to database
+2021-10-06 14:59:12 INFO  AdDAO:79 - Save Campaign data success
+2021-10-06 14:59:12 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-06 14:59:13 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=2# success
+2021-10-06 14:59:13 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=3# success
+2021-10-06 14:59:14 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=4# success
+2021-10-06 14:59:14 INFO  DatabaseConnector:18 - Connect to database
+2021-10-06 14:59:14 INFO  AdGroupDAO:82 - Save AdGroup data success
+2021-10-06 14:59:15 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-06 14:59:15 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=2# success
+2021-10-06 14:59:16 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=3# success
+2021-10-06 14:59:16 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=4# success
+2021-10-06 14:59:16 INFO  HttpRequest:61 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=5# success
+2021-10-06 14:59:16 INFO  DatabaseConnector:18 - Connect to database
+2021-10-06 14:59:17 INFO  AdDAO:80 - Save Ad data success
