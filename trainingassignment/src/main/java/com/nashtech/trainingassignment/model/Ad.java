@@ -1,6 +1,7 @@
 package com.nashtech.trainingassignment.model;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -17,7 +18,7 @@ public class Ad {
 	private String adgroup_name;
 	private String status;
 	private String opt_status;
-	private String appname;
+	private String app_name;
 
 	public Ad() {
 		super();
@@ -38,7 +39,7 @@ public class Ad {
 		this.adgroup_name = adgroup_name;
 		this.status = status;
 		this.opt_status = opt_status;
-		this.appname = appname;
+		this.app_name = appname;
 	}
 
 	public String getCampaign_id() {
@@ -129,12 +130,12 @@ public class Ad {
 		this.opt_status = opt_status;
 	}
 
-	public String getAppname() {
-		return appname;
+	public String getApp_name() {
+		return app_name;
 	}
 
-	public void setAppname(String appname) {
-		this.appname = appname;
+	public void setApp_name(String app_name) {
+		this.app_name = app_name;
 	}
 
 	@Override
@@ -142,7 +143,30 @@ public class Ad {
 		return "Ad [campaign_id=" + campaign_id + ", advertiser_id=" + advertiser_id + ", campaign_name="
 				+ campaign_name + ", ad_id=" + ad_id + ", ad_name=" + ad_name + ", ad_text=" + ad_text + ", ad_format="
 				+ ad_format + ", adgroup_id=" + adgroup_id + ", adgroup_name=" + adgroup_name + ", status=" + status
-				+ ", opt_status=" + opt_status + ", appname=" + appname + "]";
+				+ ", opt_status=" + opt_status + ", app_name=" + app_name + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(ad_format, ad_id, ad_name, ad_text, adgroup_id, adgroup_name, advertiser_id, app_name,
+				campaign_id, campaign_name, opt_status, status);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ad other = (Ad) obj;
+		return Objects.equals(ad_format, other.ad_format) && Objects.equals(ad_id, other.ad_id)
+				&& Objects.equals(ad_name, other.ad_name) && Objects.equals(ad_text, other.ad_text)
+				&& Objects.equals(adgroup_id, other.adgroup_id) && Objects.equals(adgroup_name, other.adgroup_name)
+				&& Objects.equals(advertiser_id, other.advertiser_id) && Objects.equals(app_name, other.app_name)
+				&& Objects.equals(campaign_id, other.campaign_id) && Objects.equals(campaign_name, other.campaign_name)
+				&& Objects.equals(opt_status, other.opt_status) && Objects.equals(status, other.status);
 	}
 
 }

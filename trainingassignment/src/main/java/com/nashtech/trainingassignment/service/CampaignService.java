@@ -16,9 +16,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nashtech.trainingassignment.DAO.CampaignDAO;
-import com.nashtech.trainingassignment.DAO.DatabaseConnector;
-import com.nashtech.trainingassignment.model.Campaigns;
+import com.nashtech.trainingassignment.dao.CampaignDAO;
+import com.nashtech.trainingassignment.dao.DatabaseConnector;
+import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
 
@@ -36,20 +36,24 @@ public class CampaignService extends TikTokComponent {
 	private final String PATH = "/open_api/v1.2/campaign/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
 
+	public CampaignService() {
+		super();
+	}
+
 	public CampaignService(String advertiser_id, String token) {
 		super(advertiser_id, token);
 		this.camDAO = CampaignDAO.getInstance();
 	}
 
-	public ArrayList<Campaigns> dataMapping(String response) {
+	public ArrayList<Campaign> dataMapping(String response) {
 		JSONObject Jobject = new JSONObject(response);
 		JSONObject Jdata = Jobject.getJSONObject("data");
 		JSONArray Jarray = Jdata.getJSONArray("list");
-		ArrayList<Campaigns> listCampaign = new ArrayList<Campaigns>();
+		ArrayList<Campaign> listCampaign = new ArrayList<Campaign>();
 		for (int i = 0; i < Jarray.length(); i++) {
 			JSONObject jObj = Jarray.getJSONObject(i);
 			try {
-				Campaigns campaign = objMapper.readValue(jObj.toString(), Campaigns.class);
+				Campaign campaign = objMapper.readValue(jObj.toString(), Campaign.class);
 				listCampaign.add(campaign);
 			} catch (JsonMappingException e) {
 				e.printStackTrace();
@@ -60,9 +64,9 @@ public class CampaignService extends TikTokComponent {
 		return listCampaign;
 	}
 
-	public ArrayList<Campaigns> getData() {
+	public ArrayList<Campaign> getData() {
 		String response = HttpRequest.getApi(advertiser_id, token, PATH, "1");
-		ArrayList<Campaigns> listCampaign = dataMapping(response);
+		ArrayList<Campaign> listCampaign = dataMapping(response);
 		int totalPage = PageAction.getTotalPage(response);
 		if (totalPage > 1) {
 			for (int i = 2; i <= totalPage; i++) {

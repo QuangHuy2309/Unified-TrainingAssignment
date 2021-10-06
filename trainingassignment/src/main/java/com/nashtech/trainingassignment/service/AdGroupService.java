@@ -17,10 +17,10 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.nashtech.trainingassignment.DAO.AdGroupDAO;
-import com.nashtech.trainingassignment.DAO.DatabaseConnector;
+import com.nashtech.trainingassignment.dao.AdGroupDAO;
+import com.nashtech.trainingassignment.dao.DatabaseConnector;
 import com.nashtech.trainingassignment.model.AdGroup;
-import com.nashtech.trainingassignment.model.Campaigns;
+import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
 
@@ -37,6 +37,10 @@ public class AdGroupService extends TikTokComponent {
 	private AdGroupDAO adGroupDAO;
 	private final String PATH = "/open_api/v1.2/adgroup/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
+
+	public AdGroupService() {
+		super();
+	}
 
 	public AdGroupService(String advertiser_id, String token) {
 		super(advertiser_id, token);
@@ -66,15 +70,15 @@ public class AdGroupService extends TikTokComponent {
 
 	public ArrayList<AdGroup> getData() {
 		String response = HttpRequest.getApi(advertiser_id, token, PATH, "1");
-		ArrayList<AdGroup> listCampaign = dataMapping(response);
+		ArrayList<AdGroup> listAdGroup = dataMapping(response);
 		int totalPage = PageAction.getTotalPage(response);
 		if (totalPage > 1) {
 			for (int i = 2; i <= totalPage; i++) {
 				String nextResponse = HttpRequest.getApi(advertiser_id, token, PATH, String.valueOf(i));
-				listCampaign.addAll(dataMapping(nextResponse));
+				listAdGroup.addAll(dataMapping(nextResponse));
 			}
 		}
-		return listCampaign;
+		return listAdGroup;
 	}
 
 	public String saveData() {

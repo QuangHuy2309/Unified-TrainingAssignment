@@ -1,4 +1,4 @@
-package com.nashtech.trainingassignment.DAO;
+package com.nashtech.trainingassignment.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import com.nashtech.trainingassignment.model.Campaigns;
+import com.nashtech.trainingassignment.model.Campaign;
 
 public class CampaignDAO {
 
@@ -21,7 +21,7 @@ public class CampaignDAO {
 		private static final CampaignDAO INSTANCE = new CampaignDAO();
 	}
 
-	public String saveData(ArrayList<Campaigns> listCampaign) {
+	public String saveData(ArrayList<Campaign> listCampaign) {
 		Connection connect = DatabaseConnector.getConnection();
 		String sql = "insert into tk_campaign(campaign_id, advertiser_id, campaign_name, budget, budget_mode, status, "
 				+ "opt_status, objective, objective_type, create_time, modify_time, budget_optimize_switch, bid_type, optimize_goal)"

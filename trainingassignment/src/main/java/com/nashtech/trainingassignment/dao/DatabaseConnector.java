@@ -1,4 +1,4 @@
-package com.nashtech.trainingassignment.DAO;
+package com.nashtech.trainingassignment.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

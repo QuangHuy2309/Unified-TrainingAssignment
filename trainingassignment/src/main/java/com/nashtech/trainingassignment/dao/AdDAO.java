@@ -1,4 +1,4 @@
-package com.nashtech.trainingassignment.DAO;
+package com.nashtech.trainingassignment.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.nashtech.trainingassignment.model.Ad;
 import com.nashtech.trainingassignment.model.AdGroup;
-import com.nashtech.trainingassignment.model.Campaigns;
+import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.service.CampaignService;
 
 public class AdDAO {
@@ -46,7 +46,7 @@ public class AdDAO {
 				ps.setObject(9, ad.getAdgroup_name());
 				ps.setObject(10, ad.getStatus());
 				ps.setObject(11, ad.getOpt_status());
-				ps.setObject(12, ad.getAppname());
+				ps.setObject(12, ad.getApp_name());
 				ps.setObject(13, ad.getAd_name());
 				ps.setObject(14, ad.getAd_text());
 				ps.setObject(15, ad.getAd_format());
@@ -57,7 +57,7 @@ public class AdDAO {
 				ps.setObject(20, ad.getAdgroup_name());
 				ps.setObject(21, ad.getStatus());
 				ps.setObject(22, ad.getOpt_status());
-				ps.setObject(23, ad.getAppname());
+				ps.setObject(23, ad.getAd_name());
 				ps.executeUpdate();
 				ps.close();
 

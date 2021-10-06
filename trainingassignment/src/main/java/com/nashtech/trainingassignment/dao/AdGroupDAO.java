@@ -1,4 +1,4 @@
-package com.nashtech.trainingassignment.DAO;
+package com.nashtech.trainingassignment.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.nashtech.trainingassignment.model.AdGroup;
-import com.nashtech.trainingassignment.model.Campaigns;
+import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.service.CampaignService;
 
 public class AdGroupDAO {

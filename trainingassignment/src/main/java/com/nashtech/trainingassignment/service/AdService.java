@@ -16,11 +16,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nashtech.trainingassignment.DAO.AdDAO;
-import com.nashtech.trainingassignment.DAO.DatabaseConnector;
+import com.nashtech.trainingassignment.dao.AdDAO;
+import com.nashtech.trainingassignment.dao.DatabaseConnector;
 import com.nashtech.trainingassignment.model.Ad;
 import com.nashtech.trainingassignment.model.AdGroup;
-import com.nashtech.trainingassignment.model.Campaigns;
+import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
 
@@ -37,7 +37,9 @@ public class AdService extends TikTokComponent {
 	private AdDAO adDAO;
 	private final String PATH = "/open_api/v1.2/ad/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
-
+	
+	public AdService() {}
+	
 	public AdService(String advertiser_id, String token) {
 		super(advertiser_id, token);
 		this.adDAO = AdDAO.getInstance();
@@ -64,15 +66,15 @@ public class AdService extends TikTokComponent {
 
 	public ArrayList<Ad> getData() {
 		String response = HttpRequest.getApi(advertiser_id, token, PATH, "1");
-		ArrayList<Ad> listCampaign = dataMapping(response);
+		ArrayList<Ad> listAd = dataMapping(response);
 		int totalPage = PageAction.getTotalPage(response);
 		if (totalPage > 1) {
 			for (int i = 2; i <= totalPage; i++) {
 				String nextResponse = HttpRequest.getApi(advertiser_id, token, PATH, String.valueOf(i));
-				listCampaign.addAll(dataMapping(nextResponse));
+				listAd.addAll(dataMapping(nextResponse));
 			}
 		}
-		return listCampaign;
+		return listAd;
 	}
 
 	public String saveData() {

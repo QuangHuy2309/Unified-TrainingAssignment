@@ -17,8 +17,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nashtech.trainingassignment.DAO.DatabaseConnector;
-import com.nashtech.trainingassignment.model.Campaigns;
+import com.nashtech.trainingassignment.dao.DatabaseConnector;
+import com.nashtech.trainingassignment.model.Campaign;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

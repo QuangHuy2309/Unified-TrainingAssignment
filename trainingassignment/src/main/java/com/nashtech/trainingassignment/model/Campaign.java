@@ -1,9 +1,11 @@
 package com.nashtech.trainingassignment.model;
 
+import java.util.Objects;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Campaigns {
+public class Campaign {
 	private String campaign_id;
 	private String advertiser_id;
 	private String campaign_name;
@@ -22,11 +24,20 @@ public class Campaigns {
 	
 	
 	
-	public Campaigns() {
+	public Campaign() {
 		super();
 	}
 
-	public Campaigns(String campaign_id, String advertiser_id, String campaign_name, Float budget, String budget_mode,
+	public Campaign(String campaign_id, String advertiser_id, String campaign_name, Float budget, String budget_mode) {
+		super();
+		this.campaign_id = campaign_id;
+		this.advertiser_id = advertiser_id;
+		this.campaign_name = campaign_name;
+		this.budget = budget;
+		this.budget_mode = budget_mode;
+	}
+
+	public Campaign(String campaign_id, String advertiser_id, String campaign_name, Float budget, String budget_mode,
 			String status, String opt_status, String objective, String objective_type, String create_time,
 			String modify_time, Integer budget_optimize_switch, Integer bid_type, String optimize_goal) {
 		super();
@@ -165,6 +176,20 @@ public class Campaigns {
 				+ ", opt_status=" + opt_status + ", objective=" + objective + ", objective_type=" + objective_type
 				+ ", create_time=" + create_time + ", modify_time=" + modify_time + ", budget_optimize_switch="
 				+ budget_optimize_switch + ", bid_type=" + bid_type + ", optimize_goal=" + optimize_goal + "]";
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Campaign other = (Campaign) obj;
+		return Objects.equals(advertiser_id, other.advertiser_id) && Objects.equals(bid_type, other.bid_type)
+				&& Objects.equals(budget, other.budget) && Objects.equals(budget_mode, other.budget_mode)
+				&& Objects.equals(budget_optimize_switch, other.budget_optimize_switch);
 	}
 	
 	
