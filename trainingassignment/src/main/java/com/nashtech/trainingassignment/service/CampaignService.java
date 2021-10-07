@@ -32,6 +32,7 @@ import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 
 public class CampaignService extends TikTokComponent {
+	private HttpRequest httpRequest;
 	private CampaignDAO camDAO;
 	private final String PATH = "/open_api/v1.2/campaign/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
@@ -43,6 +44,12 @@ public class CampaignService extends TikTokComponent {
 	public CampaignService(String advertiser_id, String token) {
 		super(advertiser_id, token);
 		this.camDAO = CampaignDAO.getInstance();
+		this.httpRequest = HttpRequest.getInstance();
+	}
+
+	public CampaignService(String advertiser_id, String token, HttpRequest httpRequest) {
+		super(advertiser_id, token);
+		this.httpRequest = httpRequest;
 	}
 
 	public ArrayList<Campaign> dataMapping(String response) {
@@ -65,12 +72,12 @@ public class CampaignService extends TikTokComponent {
 	}
 
 	public ArrayList<Campaign> getData() {
-		String response = HttpRequest.getApi(advertiser_id, token, PATH, "1");
+		String response = httpRequest.getApi(advertiser_id, token, PATH, "1");
 		ArrayList<Campaign> listCampaign = dataMapping(response);
 		int totalPage = PageAction.getTotalPage(response);
 		if (totalPage > 1) {
 			for (int i = 2; i <= totalPage; i++) {
-				String nextResponse = HttpRequest.getApi(advertiser_id, token, PATH, String.valueOf(i));
+				String nextResponse = httpRequest.getApi(advertiser_id, token, PATH, String.valueOf(i));
 				listCampaign.addAll(dataMapping(nextResponse));
 			}
 		}

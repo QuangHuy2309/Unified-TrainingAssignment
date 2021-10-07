@@ -17,6 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nashtech.trainingassignment.dao.AdDAO;
 import com.nashtech.trainingassignment.dao.DatabaseConnector;
 import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.service.AdService;
@@ -32,6 +33,16 @@ import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 
 public class HttpRequest {
+	private HttpRequest() {}
+	
+	public static HttpRequest getInstance() {
+		return SingletonHttpRequest.INSTANCE;
+	}
+	
+	private static class SingletonHttpRequest {
+		private static final HttpRequest INSTANCE = new HttpRequest();
+	}
+	
 	private static final Logger logger = Logger.getLogger(HttpRequest.class);
 
 	private static String buildUrl(String path) throws URISyntaxException {
@@ -39,7 +50,7 @@ public class HttpRequest {
 		return uri.toString();
 	}
 
-	public static String getApi(String advertiser_id, String token, String PATH, String page) {
+	public String getApi(String advertiser_id, String token, String PATH, String page) {
 		OkHttpClient client = new OkHttpClient().newBuilder().build();
 		URIBuilder ub;
 		URL url = null;

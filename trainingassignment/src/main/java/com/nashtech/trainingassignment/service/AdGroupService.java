@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import org.modelmapper.ModelMapper;
 
 public class AdGroupService extends TikTokComponent {
+	private HttpRequest httpRequest;
 	private AdGroupDAO adGroupDAO;
 	private final String PATH = "/open_api/v1.2/adgroup/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
@@ -45,6 +46,13 @@ public class AdGroupService extends TikTokComponent {
 	public AdGroupService(String advertiser_id, String token) {
 		super(advertiser_id, token);
 		this.adGroupDAO = AdGroupDAO.getInstance();
+		this.httpRequest = HttpRequest.getInstance();	
+	}
+	
+
+	public AdGroupService(String advertiser_id, String token, HttpRequest httpRequest) {
+		super(advertiser_id, token);
+		this.httpRequest = httpRequest;
 	}
 
 	public ArrayList<AdGroup> dataMapping(String response) {
@@ -69,12 +77,12 @@ public class AdGroupService extends TikTokComponent {
 	}
 
 	public ArrayList<AdGroup> getData() {
-		String response = HttpRequest.getApi(advertiser_id, token, PATH, "1");
+		String response = httpRequest.getApi(advertiser_id, token, PATH, "1");
 		ArrayList<AdGroup> listAdGroup = dataMapping(response);
 		int totalPage = PageAction.getTotalPage(response);
 		if (totalPage > 1) {
 			for (int i = 2; i <= totalPage; i++) {
-				String nextResponse = HttpRequest.getApi(advertiser_id, token, PATH, String.valueOf(i));
+				String nextResponse = httpRequest.getApi(advertiser_id, token, PATH, String.valueOf(i));
 				listAdGroup.addAll(dataMapping(nextResponse));
 			}
 		}
