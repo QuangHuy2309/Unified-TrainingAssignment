@@ -14,15 +14,15 @@ public class HttpRequestTest {
 	private String advertiser_id = "6791983391823626245";
 	private String PATH = "/open_api/v1.2/ad/get/";
 	private HttpRequest httpRequest;
-	
+
 	@BeforeEach
 	public void beforeEach() {
 		httpRequest = HttpRequest.getInstance();
 	}
-	
+
 	@Test
 	void getApi_WrongAdvertiserId() throws JSONException {
-		
+
 		String advertiser_id = "1";
 		String response = httpRequest.getApi(advertiser_id, token, PATH, "1");
 		JSONObject Jobject = new JSONObject(response);
@@ -40,7 +40,7 @@ public class HttpRequestTest {
 				Jobject.optString("message"));
 		assertEquals("40105", Jobject.optString("code"));
 	}
-	
+
 	@Test
 	void getApi_Success() throws JSONException {
 		String response = httpRequest.getApi(advertiser_id, token, PATH, "1");

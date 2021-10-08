@@ -2,13 +2,8 @@ package com.nashtech.trainingassignment.DAOTest;
 
 import java.util.ArrayList;
 
-import org.assertj.core.util.Arrays;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -18,24 +13,14 @@ import com.nashtech.trainingassignment.dao.AdDAO;
 import com.nashtech.trainingassignment.model.Ad;
 
 public class AdDAOTest {
-//	AdDAO adDAO = AdDAO.getInstance();
-	
-//	@MockBean
-//	private static AdDAO adDAO ;
-	
-	
-//	@BeforeAll
-//	public static void setup() {
-//		adDAO = Mockito.mock(AdDAO.class);
-//	}
-	
+
 	@Test
 	void getInstance() {
 		AdDAO adDAO1 = AdDAO.getInstance();
 		AdDAO adDAO2 = AdDAO.getInstance();
 		assertEquals(adDAO1, adDAO2);
 	}
-	
+
 	@Test
 	void saveDataSuccessTest() {
 		AdDAO adDAO = Mockito.mock(AdDAO.class);
@@ -51,7 +36,6 @@ public class AdDAOTest {
 		listAd.add(ad2);
 		listAd.add(ad3);
 		when(adDAO.saveData(listAd)).thenReturn(true);
-//		String result = adDAO.saveData(listAd) ;
 		assertTrue(adDAO.saveData(listAd));
 	}
 

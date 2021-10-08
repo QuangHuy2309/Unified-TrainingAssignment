@@ -1,37 +1,18 @@
 package com.nashtech.trainingassignment.service;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.nashtech.trainingassignment.dao.AdGroupDAO;
-import com.nashtech.trainingassignment.dao.DatabaseConnector;
 import com.nashtech.trainingassignment.model.AdGroup;
-import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-import org.apache.http.client.utils.URIBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.modelmapper.ModelMapper;
 
 public class AdGroupService extends TikTokComponent {
 	private HttpRequest httpRequest;
@@ -46,9 +27,8 @@ public class AdGroupService extends TikTokComponent {
 	public AdGroupService(String advertiser_id, String token) {
 		super(advertiser_id, token);
 		this.adGroupDAO = AdGroupDAO.getInstance();
-		this.httpRequest = HttpRequest.getInstance();	
+		this.httpRequest = HttpRequest.getInstance();
 	}
-	
 
 	public AdGroupService(String advertiser_id, String token, HttpRequest httpRequest) {
 		super(advertiser_id, token);
@@ -89,8 +69,8 @@ public class AdGroupService extends TikTokComponent {
 		return listAdGroup;
 	}
 
-	public String saveData() {
-		return adGroupDAO.saveData(getData()) ? "Save AdGroup data success" : "Save AdGroup data failed";
+	public void saveData() {
+		adGroupDAO.saveData(getData());
 	}
 
 }

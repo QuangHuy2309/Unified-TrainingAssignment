@@ -15,15 +15,12 @@ public class Campaign {
 	private String opt_status;
 	private String objective;
 	private String objective_type;
-	
 	private String create_time;
 	private String modify_time;
 	private Integer budget_optimize_switch;
 	private Integer bid_type;
 	private String optimize_goal;
-	
-	
-	
+
 	public Campaign() {
 		super();
 	}
@@ -191,6 +188,5 @@ public class Campaign {
 				&& Objects.equals(budget, other.budget) && Objects.equals(budget_mode, other.budget_mode)
 				&& Objects.equals(budget_optimize_switch, other.budget_optimize_switch);
 	}
-	
-	
+
 }

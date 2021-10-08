@@ -1,35 +1,17 @@
 package com.nashtech.trainingassignment.service;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nashtech.trainingassignment.dao.CampaignDAO;
-import com.nashtech.trainingassignment.dao.DatabaseConnector;
 import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-import org.apache.http.client.utils.URIBuilder;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.modelmapper.ModelMapper;
 
 public class CampaignService extends TikTokComponent {
 	private HttpRequest httpRequest;
@@ -84,8 +66,8 @@ public class CampaignService extends TikTokComponent {
 		return listCampaign;
 	}
 
-	public String saveData() {
-		return camDAO.saveData(getData())  ? "Save Campaign data success" : "Save Campaign data failed";
+	public void saveData() {
+		camDAO.saveData(getData());
 	}
 
 }

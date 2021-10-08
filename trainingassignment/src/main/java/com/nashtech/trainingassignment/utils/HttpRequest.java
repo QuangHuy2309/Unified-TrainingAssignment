@@ -5,22 +5,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.nashtech.trainingassignment.dao.AdDAO;
-import com.nashtech.trainingassignment.dao.DatabaseConnector;
-import com.nashtech.trainingassignment.model.Campaign;
-import com.nashtech.trainingassignment.service.AdService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,21 +12,19 @@ import okhttp3.Response;
 
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.modelmapper.ModelMapper;
 
 public class HttpRequest {
-	private HttpRequest() {}
-	
+	private HttpRequest() {
+	}
+
 	public static HttpRequest getInstance() {
 		return SingletonHttpRequest.INSTANCE;
 	}
-	
+
 	private static class SingletonHttpRequest {
 		private static final HttpRequest INSTANCE = new HttpRequest();
 	}
-	
+
 	private static final Logger logger = Logger.getLogger(HttpRequest.class);
 
 	private static String buildUrl(String path) throws URISyntaxException {
@@ -69,11 +51,11 @@ public class HttpRequest {
 		Response response;
 		try {
 			response = client.newCall(request).execute();
-			logger.info("Get data from "+url+" success");
+			logger.info("Get data from " + url + " success");
 			return response.body().string();
 		} catch (IOException e) {
 			e.printStackTrace();
-			logger.error("Get data from "+url+" failed");
+			logger.error("Get data from " + url + " failed");
 			return null;
 		}
 	}

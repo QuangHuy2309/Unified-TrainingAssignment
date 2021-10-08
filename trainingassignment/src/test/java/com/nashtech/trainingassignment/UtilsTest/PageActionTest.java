@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
 
 public class PageActionTest {

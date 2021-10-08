@@ -1,38 +1,18 @@
 package com.nashtech.trainingassignment.service;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nashtech.trainingassignment.dao.AdDAO;
-import com.nashtech.trainingassignment.dao.DatabaseConnector;
 import com.nashtech.trainingassignment.model.Ad;
-import com.nashtech.trainingassignment.model.AdGroup;
-import com.nashtech.trainingassignment.model.Campaign;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import com.nashtech.trainingassignment.utils.PageAction;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-import org.apache.http.client.utils.URIBuilder;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.modelmapper.ModelMapper;
 
 public class AdService extends TikTokComponent {
 	private HttpRequest httpRequest;
@@ -40,15 +20,15 @@ public class AdService extends TikTokComponent {
 	private final String PATH = "/open_api/v1.2/ad/get/";
 	private static final ObjectMapper objMapper = new ObjectMapper();
 	private static final Logger logger = Logger.getLogger(AdService.class);
-	
-	public AdService() {}
-	
+
+	public AdService() {
+	}
+
 	public AdService(String advertiser_id, String token) {
 		super(advertiser_id, token);
 		this.adDAO = AdDAO.getInstance();
 		this.httpRequest = HttpRequest.getInstance();
 	}
-	
 
 	public AdService(String advertiser_id, String token, HttpRequest httpRequest) {
 		super(advertiser_id, token);
@@ -87,8 +67,8 @@ public class AdService extends TikTokComponent {
 		return listAd;
 	}
 
-	public String saveData() {
-		return adDAO.saveData(getData()) ? "Save Ad data success" : "Save Ad data failed";
+	public void saveData() {
+		adDAO.saveData(getData());
 	}
 
 }

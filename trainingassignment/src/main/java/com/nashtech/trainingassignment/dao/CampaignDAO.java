@@ -65,7 +65,6 @@ public class CampaignDAO {
 				ps.executeUpdate();
 				ps.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				checkSaveCamp.set(false);
 			}

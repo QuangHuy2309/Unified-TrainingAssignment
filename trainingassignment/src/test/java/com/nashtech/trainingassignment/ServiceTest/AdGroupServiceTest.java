@@ -7,17 +7,12 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 
-import com.nashtech.trainingassignment.model.Ad;
 import com.nashtech.trainingassignment.model.AdGroup;
 import com.nashtech.trainingassignment.service.AdGroupService;
-import com.nashtech.trainingassignment.service.AdService;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -29,16 +24,6 @@ public class AdGroupServiceTest {
 
 	@Mock
 	HttpRequest httpRequestMock;
-	
-//	@InjectMocks
-//	AdGroupService adGroupServiceMock;
-
-	@BeforeEach
-	public void beforeEach() {
-//		httpRequestMock= Mockito.mock(HttpRequest.class);
-//		adGroupServiceMock = new AdGroupService(httpRequestMock);
-//		adGroupServiceMock = Mockito.mock(AdGroupService.class);
-	}
 
 	@Test
 	void dataMappingTest_Success() {
@@ -90,11 +75,9 @@ public class AdGroupServiceTest {
 				+ "        ]\r\n" + "    },\r\n" + "    \"request_id\": \"202110060408360102452441991CAC1149\"\r\n"
 				+ "}";
 		assertNotNull(httpRequestMock);
-		AdGroupService adGroupService = new AdGroupService(advertiser_id, token,httpRequestMock);
-		when(httpRequestMock.getApi(advertiser_id, token, PATH, "1"))
-				.thenReturn(response);
-		when(httpRequestMock.getApi(advertiser_id, token, PATH, "2"))
-		.thenReturn(response);
+		AdGroupService adGroupService = new AdGroupService(advertiser_id, token, httpRequestMock);
+		when(httpRequestMock.getApi(advertiser_id, token, PATH, "1")).thenReturn(response);
+		when(httpRequestMock.getApi(advertiser_id, token, PATH, "2")).thenReturn(response);
 		ArrayList<AdGroup> adGrpList_test = adGroupService.getData();
 		assertEquals(adGrpList_test.size(), 6);
 	}

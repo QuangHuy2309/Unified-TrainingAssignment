@@ -10,11 +10,9 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.nashtech.trainingassignment.model.Ad;
-import com.nashtech.trainingassignment.model.AdGroup;
 import com.nashtech.trainingassignment.service.AdService;
 import com.nashtech.trainingassignment.utils.HttpRequest;
 

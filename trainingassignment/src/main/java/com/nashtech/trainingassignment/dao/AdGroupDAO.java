@@ -14,6 +14,7 @@ import com.nashtech.trainingassignment.service.CampaignService;
 
 public class AdGroupDAO {
 	private static final Logger logger = Logger.getLogger(AdGroupDAO.class);
+
 	private AdGroupDAO() {
 	}
 
@@ -68,7 +69,6 @@ public class AdGroupDAO {
 				ps.executeUpdate();
 				ps.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				checkSaveAdGroup.set(false);
 			}
