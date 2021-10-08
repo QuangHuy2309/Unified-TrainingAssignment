@@ -61,3 +61,36 @@
 2021-10-08 09:03:06 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=5# success
 2021-10-08 09:03:06 INFO  DatabaseConnector:20 - Connect to database
 2021-10-08 09:03:06 INFO  AdDAO:80 - Save Ad data success
+2021-10-08 09:08:16 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/campaign/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:08:16 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/campaign/get/?advertiser_id=6791983391823626245&page=2# success
+2021-10-08 09:08:17 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/campaign/get/?advertiser_id=6791983391823626245&page=3# success
+2021-10-08 09:08:17 INFO  DatabaseConnector:20 - Connect to database
+2021-10-08 09:08:17 INFO  AdDAO:78 - Save Campaign data success
+2021-10-08 09:08:17 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:08:18 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=2# success
+2021-10-08 09:08:19 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=3# success
+2021-10-08 09:08:19 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/adgroup/get/?advertiser_id=6791983391823626245&page=4# success
+2021-10-08 09:08:19 INFO  DatabaseConnector:20 - Connect to database
+2021-10-08 09:08:19 INFO  AdGroupDAO:82 - Save AdGroup data success
+2021-10-08 09:08:20 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:08:20 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=2# success
+2021-10-08 09:08:21 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=3# success
+2021-10-08 09:08:21 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=4# success
+2021-10-08 09:08:22 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=5# success
+2021-10-08 09:08:22 INFO  DatabaseConnector:20 - Connect to database
+2021-10-08 09:08:22 INFO  AdDAO:80 - Save Ad data success
+2021-10-08 09:09:26 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:09:26 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:09:27 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=1&page=1# success
+2021-10-08 09:19:19 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:19:19 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:19:20 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=1&page=1# success
+2021-10-08 09:24:13 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:24:14 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:24:14 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=1&page=1# success
+2021-10-08 09:27:48 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:27:48 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:27:49 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=1&page=1# success
+2021-10-08 09:30:14 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:30:14 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=6791983391823626245&page=1# success
+2021-10-08 09:30:15 INFO  HttpRequest:54 - Get data from https://business-api.tiktok.com/open_api/v1.2/ad/get/?advertiser_id=1&page=1# success

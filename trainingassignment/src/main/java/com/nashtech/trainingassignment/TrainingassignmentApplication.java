@@ -9,9 +9,9 @@ import com.nashtech.trainingassignment.service.AdService;
 import com.nashtech.trainingassignment.service.CampaignService;
 
 public class TrainingassignmentApplication {
-	private static final Logger logger = Logger.getLogger(TrainingassignmentApplication.class);
 
 	public static void main(String[] args) {
+		Logger logger = Logger.getLogger(TrainingassignmentApplication.class);
 		String token = "";
 		String advertiser_id = "";
 		Scanner input = new Scanner(System.in);
